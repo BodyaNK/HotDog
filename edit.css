@@ -1,0 +1,39 @@
+::-webkit-scrollbar {
+    width: 5px;
+}
+::-webkit-scrollbar-track {
+    background: #0f0f0f; 
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.8); 
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #E2472F; 
+}
+body{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: rgb(212, 212, 212);
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.container{
+    top: 50%;
+    transform: translateY(50%);
+    width: auto;
+    height: auto;
+    background: #757372;
+    border-radius: 10px 0 10px 0;
+}
+#Name{
+    width: 200px;
+}
+#textarea{
+    width: 200px;
+}
+h1{
+    text-align: center;
+}
