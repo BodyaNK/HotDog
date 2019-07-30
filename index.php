@@ -20,7 +20,7 @@
     
     <header>
         <div id="header-back">
-            <div>
+            <div id="h1_main">
                 <h1>THE BEST HOT DOGS<br> IN THE WORLD</h1>
             </div>
             <div class="scroll-downs">
@@ -57,6 +57,7 @@
                     $result = mysqli_query($connection, $query);
                     $row = mysqli_fetch_array($result);
                     do{
+                        if($row['id']!=''){
                         echo "<div class='col-md-4 col-sm-12 box-content' style='background: url(\"".$row['image']."\"); background-size: cover;'>".
                                "<div class='blocks-content'>".
                                     "<div class='row'>".
@@ -73,6 +74,10 @@
                                     "</div>".
                                 "</div>".
                               "</div>";
+                        }
+                        else{
+                            echo "<p id='no_hotdogs'>No hot dogs yet</p>";
+                        }
                     }while($row = mysqli_fetch_array($result));
 
                 ?>

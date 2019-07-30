@@ -14,10 +14,14 @@
 
         $img_name = $_FILES['image']['name'];
         $tmp_name = $_FILES['image']['tmp_name'];
-        move_uploaded_file($tmp_name, "images-hotdogs/".$img_name);
-        $src="images-hotdogs/".$img_name;
+        if(!empty($img_name) || !empty($tmp_name)){
+            move_uploaded_file($tmp_name, "images-hotdogs/".$img_name);
+            $src="images-hotdogs/" . $img_name;
+            $query_2 = "UPDATE hotdogs SET image ='$src' WHERE id='$id'";
+            $result_2 = mysqli_query($connection, $query_2);
+        }
 
-        $query_2 = "UPDATE hotdogs SET name='$name', info='$info', image ='$src' WHERE id='$id'";
+        $query_2 = "UPDATE hotdogs SET name='$name', info='$info' WHERE id='$id'";
         $result_2 = mysqli_query($connection, $query_2);
         if($result_2){
             header("Location: index.php"); exit();
@@ -67,7 +71,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
-            $('.deleteuser').click(function(){
+            $('.deleteuser').on('click', function(e)
+            {
+                e.preventDefault();
                 var result = confirm("Do you really want to remove this?");
                 if(result==true){
                     var clickBtnValue = $(this).attr('id');
